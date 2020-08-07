@@ -8,18 +8,18 @@ filename = 'shopping.csv'
 df = pd.read_csv(filename)
 # Convert month data in shopping dataset to numeric data.
 conditions = [
-df['Month'] == 'Jan',
-df['Month'] == 'Feb',
-df['Month'] == 'Mar',
-df['Month'] == 'Apr',
-df['Month'] == 'May',
-df['Month'] == 'June',
-df['Month'] == 'Jul',
-df['Month'] == 'Aug',
-df['Month'] == 'Sep',
-df['Month'] == 'Oct',
-df['Month'] == 'Nov',
-df['Month'] == 'Dec'
+    df['Month'] == 'Jan',
+    df['Month'] == 'Feb',
+    df['Month'] == 'Mar',
+    df['Month'] == 'Apr',
+    df['Month'] == 'May',
+    df['Month'] == 'June',
+    df['Month'] == 'Jul',
+    df['Month'] == 'Aug',
+    df['Month'] == 'Sep',
+    df['Month'] == 'Oct',
+    df['Month'] == 'Nov',
+    df['Month'] == 'Dec'
 ]
 outputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 df['Month'] = np.select(conditions, outputs)
