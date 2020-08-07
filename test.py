@@ -46,21 +46,16 @@ def numeric_conversion(df):
 shopping_df = pd.read_csv(data_file)
 
 numeric_conversion(shopping_df)
-
-#print(shopping_df.head())
-
 evidence = []
 label = []
 shopping = (evidence, label)
-
-
-print(len(shopping_df['Administrative'].tolist()))
-
-tracker = 5
-for row in shopping_df:
-    #print(row)
-    evidence.append(row[0:17])
-    label.append(row[-1])
-    tracker += -1
-    if tracker < 0:
-            break
+evidence_columns = [
+    'Administrative', 'Administrative_Duration', 'Informational',
+    'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration',
+    'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month',
+    'OperatingSystems', 'Browser', 'Region', 'TrafficType', 'VisitorType',
+    'Weekend']
+for column in evidence_columns:
+    evidence.append(shopping_df[column].tolist())
+label.append(shopping_df['Revenue'].tolist())
+return shopping
