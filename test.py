@@ -35,16 +35,21 @@ df['VisitorType'] = np.select(conditions, outputs, 0)
 conditions = [df['Revenue'] == True]
 outputs = [1]
 df['Revenue'] = np.select(conditions, outputs, 0)
+print(df.info())
+# Create separate dataframe for evidence and label
+df_label = df['Revenue']
+df.drop("Revenue", axis=1, inplace=True)
+
+
 # Put information in tuple
-evidence = []
-label = []
+evidence = df.values.tolist()
+label = df_label.values.tolist()
 shopping = (evidence, label)
-evidence_columns = [
-    'Administrative', 'Administrative_Duration', 'Informational',
-    'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration',
-    'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month',
-    'OperatingSystems', 'Browser', 'Region', 'TrafficType', 'VisitorType',
-    'Weekend']
-for column in evidence_columns:
-    evidence.append(df[column].tolist())
-label.append(df['Revenue'].tolist())
+
+for l1 in shopping:
+    print(len(l1))
+
+print(evidence[0])
+for value in evidence[0]:
+    print(type(value))
+print(label[0])
