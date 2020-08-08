@@ -91,7 +91,6 @@ def load_data(filename):
     conditions = [df['Revenue'] == True]
     outputs = [1]
     df['Revenue'] = np.select(conditions, outputs, 0)
-
     # Put information in tuple
     evidence = []
     labels = []
@@ -106,7 +105,6 @@ def load_data(filename):
         evidence.append(user_session)
         labels.append(row.Revenue)
     shopping = (evidence, labels)
-
     return shopping
 
 
