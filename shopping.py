@@ -94,7 +94,7 @@ def load_data(filename):
 
     # Put information in tuple
     evidence = []
-    label = []
+    labels = []
     for row in df.itertuples(): 
         user_session = [
             row.Administrative, row.Administrative_Duration, row.Informational,
@@ -104,8 +104,8 @@ def load_data(filename):
             row.Weekend
         ]
         evidence.append(user_session)
-        label.append(row.Revenue)
-    shopping = (evidence, label)
+        labels.append(row.Revenue)
+    shopping = (evidence, labels)
 
     return shopping
 
